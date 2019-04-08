@@ -24,12 +24,12 @@ public class Equipment : Item {
     /// </summary>
     public EquipmentType EquipType { get; set; }
 
-    public Equipment(int id, string name, ItemType type, ItemQuality quality, string des, int capacity, int buyPrice, int sellPrice,
-        int strength,int intelligence,int agility,int stamina,EquipmentType equipType):base(id, name, type, quality, des, capacity, buyPrice, sellPrice)
+    public Equipment(int id, string name, ItemType type, ItemQuality quality, string des, int capacity, int buyPrice, int sellPrice,string sprite,
+        int strength,int intelligence,int agility,int stamina,EquipmentType equipType):base(id, name, type, quality, des, capacity, buyPrice, sellPrice,sprite)
     {
         this.Strength = strength;
         this.Intelligence = intelligence;
-        this.Agility = agility;
+        this.Agility = agility; 
         this.Stamina = stamina;
         this.EquipType = equipType;
     }

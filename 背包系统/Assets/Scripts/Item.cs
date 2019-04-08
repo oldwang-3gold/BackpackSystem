@@ -14,8 +14,9 @@ public class Item  {
     public int Capacity { get; set; }
     public int BuyPrice { get; set; }
     public int SellPrice { get; set; }
+    public string Sprite { get; set; }
 
-    public Item(int id,string name,ItemType type,ItemQuality quality,string des,int capacity,int buyPrice,int sellPrice)
+    public Item(int id,string name,ItemType type,ItemQuality quality,string des,int capacity,int buyPrice,int sellPrice,string sprite)
     {
         this.ID = id;
         this.Name = name;
@@ -25,6 +26,7 @@ public class Item  {
         this.Capacity = capacity;
         this.BuyPrice = buyPrice;
         this.SellPrice = sellPrice;
+        this.Sprite = sprite;
     }
 
 
