@@ -51,5 +51,10 @@ public class Item  {
         Epic,
         Legendary,
         Artifact
-    }	
+    }
+
+    public virtual string GetToolTipText()
+    {
+        return Name;//TODO
+    }
 }

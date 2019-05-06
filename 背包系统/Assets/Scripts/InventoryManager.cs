@@ -21,15 +21,33 @@ public class InventoryManager : MonoBehaviour
         }      
     }
     #endregion
-
-    void Start()
-    {
-        ParseItemJson();
-    }
     /// <summary>
     /// 物品信息的集合
     /// </summary>
     private List<Item> itemList;
+
+    private ToolTip toolTip;
+    private bool isToolTipShow = false;
+    private Canvas canvas;
+    private Vector2 toolTipPositionOffset=new Vector2(10,-10);
+    void Start()
+    {
+        ParseItemJson();
+        toolTip = GameObject.FindObjectOfType<ToolTip>();
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+    }
+
+    void Update()
+    {
+        if (isToolTipShow)
+        {
+            //控制提示面板跟随鼠标
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+                Input.mousePosition, null, out position);
+            toolTip.SetLocalPostion(position+toolTipPositionOffset);
+        }
+    }
 
     /// <summary>
     /// 解析物品信息
@@ -73,7 +91,32 @@ public class InventoryManager : MonoBehaviour
                     break;
             }
             itemList.Add(item);
-            Debug.Log(item);
         }
     }
+
+    public Item GetItemById(int id)
+    {
+        foreach (Item item in itemList )
+        {
+            if (item.ID == id)
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    public void ShowToolTip(string content)
+    {
+        isToolTipShow = true;
+        toolTip.Show(content);
+    }
+
+    public void HideToolTip()
+    {
+        isToolTipShow = false;
+        toolTip.Hide();
+    }
+
 }
